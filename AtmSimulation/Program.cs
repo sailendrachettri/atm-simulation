@@ -3,7 +3,7 @@ Console.WriteLine("Please Select Your Account Type: ");
 Console.WriteLine("1. International");
 Console.WriteLine("2. Domestic");
 
-int accountType, operationType, accountPin, withdrawAmount;
+int accountType, operationType, accountPin, withdrawAmount, depositeAmount, newAtmPin;
 double currentBalance = 19870.79;
 
 if(!int.TryParse(Console.ReadLine(), out accountType) || (accountType != 1 && accountType != 2))
@@ -47,11 +47,28 @@ if(operationType == 1)
 
 } else if(operationType == 2)
 {
+    Console.WriteLine("Enter amount you want to deposite.");
+    if(!int.TryParse(Console.ReadLine(), out depositeAmount))
+    {
+        Console.WriteLine("Transaction Canceld. Please enter valid amount");
+        return;
+    }
+
+    Console.WriteLine($"Available Balance: Rs {currentBalance + depositeAmount}");
 
 } else if(operationType == 3)
 {
+    Console.WriteLine($"Available Balance: Rs {currentBalance}");
 
 } else if(operationType == 4)
 {
+    Console.WriteLine("Please enter your NEW 4 digit pin");
+    if(!int.TryParse(Console.ReadLine(), out newAtmPin))
+    {
+        Console.WriteLine("Transaction Canceld. Please enter valid 4 digit pin");
+        return;
+    }
+
+    Console.WriteLine("PIN reset successful");
 
 }
